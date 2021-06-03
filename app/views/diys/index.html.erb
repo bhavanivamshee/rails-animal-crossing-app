@@ -1,0 +1,5 @@
+<h1> All the Diys!!! </h1>
+
+<% @diys.each do |diy| %>
+    <li><%= link_to(diy.name, diy_path(diy))%></li>
+<%end%>
