@@ -4,8 +4,7 @@
 <br>
 <h2> number of recipes needed to unlock: <%= @diy.recipes_to_unlock %> </h2>
 <h2> materials needed: </h2>
-<% @diy.materials_diy.each do |hash| %>
-    <% hash.to_a.each do |element| %>
-        <li><%= element.join(": ")%></li>
-        <% end %>
+<% @diy.materials.each do |mat| %>
+    <li> name: <%= mat.name %> | count: <%= mat.count %> </li>
     <% end %>
+    <br><br>
