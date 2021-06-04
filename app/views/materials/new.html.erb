@@ -1,11 +1,17 @@
 <h1> Keep track of materials for a diy </h1>
+<br><br>
+<% if @diy %>
+    <h3> <%= @diy.name %> </h3>
+<%end%>
 
-<%= form_with model: @material do |f| %>
+<%= form_with model: @material, url: form_url_helper(@diy) do |f| %>
     <%=f.label "Material Name"%>
     <%=f.text_field(:name)%>
     <%=f.label "Number Needed" %>
     <%=f.text_field(:count)%>
+    <%if !@diy %>
     <%=f.label "diy"%>
     <%=f.collection_select(:diy_id, Diy.all, :id, :name) %>
+    <% end %>
     <%=f.submit("Save")%>
     <% end %>
