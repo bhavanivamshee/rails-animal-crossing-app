@@ -1,5 +1,10 @@
 <h1> All the Materials!!! </h1>
 
+<%= form_with url: materials_path, method: :get do |f| %>
+    <%=f.text_field :name %>
+    <%=f. submit"Search"%>
+  <%end%>
+
 <% @materials.each do |material| %>
    <li> <%= material.name %>: <%= material.count %> <%= material.diy.name %> </li>
     <br>

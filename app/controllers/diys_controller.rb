@@ -10,7 +10,12 @@ class DiysController < ApplicationController
     end
 
     def show
-        @diy = Diy.find_by_id(params[:id])
+        if params[:user_id]
+            @user = User.findby(id: params[:user_id])
+            @diy = Diy.find_by_id(params[:id])
+        else
+            @diy = Diy.find_by_id(params[:id])
+        end
     end
 
 end

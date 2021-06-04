@@ -1,0 +1,15 @@
+
+<h3> Editing material for <%=@material.diy.name%> </h3>
+
+<%= form_for(@material)  do |f| %>
+    <%=f.label "Material Name"%>
+    <%=f.text_field(:name)%>
+    <%=f.label "Number Needed" %>
+    <%=f.text_field(:count)%>
+    <%=f.label "Have all the materials?"%>
+    <%=f.label "yes"%>
+    <%=f.radio_button :complete, true %> 
+    <%=f.label "no"%>
+    <%=f.radio_button :complete, false %> 
+    <%=f.submit("Save")%>
+    <% end %>

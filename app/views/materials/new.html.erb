@@ -2,13 +2,26 @@
 <br><br>
 <% if @diy %>
     <h3> <%= @diy.name %> </h3>
+    <h3> Materials needed: </h3>
+    <% @diy.materials_diy.each do |hash| %>
+        <% hash.to_a.each do |element| %>
+            <li><%= element.join(": ")%></li>
+            <% end %>
+        <% end %>
 <%end%>
+
+<br>
 
 <%= form_with model: @material, url: form_url_helper(@diy) do |f| %>
     <%=f.label "Material Name"%>
     <%=f.text_field(:name)%>
-    <%=f.label "Number Needed" %>
+    <%=f.label "Material Count Needed" %>
     <%=f.text_field(:count)%>
+    <%=f.label "Secured this material?"%>
+    <%=f.label "yes"%>
+    <%=f.radio_button :complete, true %> 
+    <%=f.label "no"%>
+    <%=f.radio_button :complete, false %> 
     <%if !@diy %>
     <%=f.label "diy"%>
     <%=f.collection_select(:diy_id, Diy.all, :id, :name) %>

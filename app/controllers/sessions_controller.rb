@@ -18,8 +18,26 @@ class SessionsController < ApplicationController
         end
     end
 
+    def create_with_facebook
+        user = User.find_or_create_by(username: fb_auth['info']['email']) do |u|
+            u.password = 'password'
+        end
+        if user.save
+            session[:user_id] = user.id
+            redirect_to user_diys_path(user)
+        else
+            redirect_to signup_path
+        end
+    end
+
     def destroy
         session.clear
         redirect_to '/login'
+    end
+
+    private
+
+    def fb_auth
+        self.request.env['omniauth.auth']
     end
 end
