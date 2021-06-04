@@ -9,5 +9,15 @@
 
 Material.destroy_all
 Diy.destroy_all
+User.destroy_all
 
 Diy.get_data
+
+10.times do
+    User.create(
+        island_name: Faker::Movies::HarryPotter.location, 
+        username: Faker::Movies::HarryPotter.character, 
+        email: Faker::Internet.email,
+        dream_address: "1234-1234-1234",
+        password: "123")
+end
