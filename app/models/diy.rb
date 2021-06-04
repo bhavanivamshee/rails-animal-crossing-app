@@ -1,6 +1,7 @@
 class Diy < ApplicationRecord
     has_many :materials
     accepts_nested_attributes_for :materials
+    has_many :users, through: :materials
 
     def self.get_data
         resp = RestClient::Request.execute(method: :get,
