@@ -4,10 +4,21 @@ class SessionsController < ApplicationController
     end
     
     def create
+        @user = User.find_by(username: params[:username])
+        if @user && @user.authenticate(params[:password])
+            session[:user_id] = @user.id
+            redirect_to user_diys_path(@user)
+        elsif @user
+            @errors = ["Invalid Password"]
+            render :new
+        else
+            @errors = ["Invalid Username"]
+            render :new
+        end
     end
 
     def destroy
         session.clear
-        redirect_to '/signup'
+        redirect_to '/login'
     end
 end
