@@ -1,8 +1,6 @@
 <h1> All the Materials!!! </h1>
 
 <% @materials.each do |material| %>
-    <%= material.diy.name %>
+   <li> <%= material.name %>: <%= material.count %> <%= material.diy.name %> </li>
     <br>
-    <%= material.name %>
-    <br> <br>
 <%end%>
