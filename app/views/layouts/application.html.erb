@@ -11,6 +11,8 @@
   </head>
 
   <body>
+  <%=link_to "All Diys", diys_path %>
+  <%= link_to "My Diys", user_diys_path(current_user) %>
     <%= yield %>
   </body>
 </html>
