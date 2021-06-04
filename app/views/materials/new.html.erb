@@ -1,0 +1,9 @@
+<h1> Keep track of materials for a diy </h1>
+
+<%= form_for(@material) do |f| %>
+    <%=f.label "Material Name"%>
+    <%=f.text_field(:name)%>
+    <%=f.label "Number Needed" %>
+    <%=f.text_field(:count)%>
+    <%=f.submit("Save")%>
+    <% end %>
