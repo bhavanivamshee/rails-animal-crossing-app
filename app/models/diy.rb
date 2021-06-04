@@ -3,6 +3,8 @@ class Diy < ApplicationRecord
     accepts_nested_attributes_for :materials
     has_many :users, through: :materials
 
+    validates :name, presence: true, uniqueness: true
+
     def self.get_data
         resp = RestClient::Request.execute(method: :get,
         url: "https://api.nookipedia.com/nh/recipes",
