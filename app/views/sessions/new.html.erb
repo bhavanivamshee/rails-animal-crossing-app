@@ -3,7 +3,6 @@
 <% @errors && @errors.each do |e| %>
   <li><%= e %></li>
   <%end%>
-  
 <%= form_tag login_path do |f| %>
     <%=label_tag "Username"%>
     <%=text_field_tag :username%>
