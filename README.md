@@ -1,24 +1,28 @@
-# README
+# Animal Crossing App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The application helps you keep track of your favorite Diys and materials needed, with data seeded from an Animal Crossing API.  
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+To get started with the app, clone the repo and then install the needed gems:
 
-* System dependencies
+`$ bundle install`
 
-* Configuration
+Next, migrate the database:
 
-* Database creation
+`$ rails db:migrate`
 
-* Database initialization
+Then run the app in a local server:
 
-* How to run the test suite
+`$ rails s`
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## Blog
 
-* ...
+https://bhavaniv.medium.com/how-to-seed-a-rails-app-with-an-external-api-c49e73930f12
+
+
+## License
+
+The gem is available as open source under the terms of the MIT License.
+
