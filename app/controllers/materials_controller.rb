@@ -1,5 +1,7 @@
 class MaterialsController < ApplicationController
 
+    before_action :redirect_user
+
     def index
         if params[:name]
             @materials = Material.name_search(params[:name])
@@ -20,11 +22,7 @@ class MaterialsController < ApplicationController
     end
 
     def create
-        @material = Material.create(material_params)
-        @material.user = current_user
-        if params[:diy_id]
-            @material.diy_id = params[:diy_id]
-        end
+        @material = current_user.materials.build(material_params)
         if @material.save
         redirect_to user_diys_path(@material.user)
         else
@@ -33,14 +31,8 @@ class MaterialsController < ApplicationController
     end
 
     def edit
-        if params[:diy_id]
-            @diy = Diy.find_by(id: params[:diy_id])
             @material = Material.find_by(id: params[:id])
             redirect_to '/diys' unless @material.user == current_user
-        else
-            @material = Material.find_by(id: params[:id])
-            redirect_to '/diys' unless @material.user == current_user
-        end
     end
 
     def update

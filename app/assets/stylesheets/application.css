@@ -16,6 +16,10 @@
 
 
  .field_with_errors input {
-    border-color: red;
+      border-color: red;
  
+  }
+
+  div {
+    display: inline-block;
   }

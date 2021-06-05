@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
 
+    skip_before_action :redirect_user, except: [:destroy]
+
     def new
         @user = User.new
     end

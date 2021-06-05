@@ -3,6 +3,6 @@ class User < ApplicationRecord
     has_many :materials
     has_many :diys, through: :materials
 
-    validates_presence_of :username
+    validates_presence_of :username, :name, :island_name, :email, :dream_address
     validates_uniqueness_of :username
 end

@@ -1,3 +1,5 @@
+
+
 <h1> Keep track of materials for a diy </h1>
 <br><br>
 <% if @diy %>
@@ -9,6 +11,7 @@
             <% end %>
         <% end %>
 <%end%>
+<br>
 
 <br>
 
@@ -22,9 +25,12 @@
     <%=f.radio_button :complete, true %> 
     <%=f.label "no"%>
     <%=f.radio_button :complete, false %> 
+    <%=f.hidden_field :diy_id %>
     <%if !@diy %>
     <%=f.label "diy"%>
     <%=f.collection_select(:diy_id, Diy.all, :id, :name) %>
     <% end %>
     <%=f.submit("Save")%>
     <% end %>
+<br><br>
+    <%=render(partial: "application/errors", locals: {errors: @material.errors.full_messages})%>
