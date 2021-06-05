@@ -1,23 +1,31 @@
 class DiysController < ApplicationController
 
+    before_action :find_user, only: [:index, :show]
+
+
     def index
-        if params[:name]
+        if params[:user_id]
+        @diys = @user.diys
+        elsif params[:name]
             @diys = Diy.name_search(params[:name])
-        elsif params[:user_id]
-        user = User.find_by(id: params[:user_id])
-        @diys = user.diys
         else
-        @diys = Diy.all
+            @diys = Diy.all
         end
     end
 
     def show
         if params[:user_id]
-            @user = User.findby(id: params[:user_id])
-            @diy = Diy.find_by_id(params[:id])
+            @user.diy.find_by_id(params[:id])
         else
             @diy = Diy.find_by_id(params[:id])
         end
     end
+    
+    private
 
+    def find_user
+        @user = User.find_by(id: params[:user_id])
+    end
+
+    
 end

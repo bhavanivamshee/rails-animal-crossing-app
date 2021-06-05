@@ -3,13 +3,19 @@
 <img src="<%= @diy.image_url %>">
 <br>
 <h2> number of recipes needed to unlock: <%= @diy.recipes_to_unlock %> </h2>
+<h3> Materials required: </h3>
+    <% @diy.materials_diy.each do |hash| %>
+        <% hash.to_a.each do |element| %>
+            <li><%= element.join(": ")%></li>
+            <% end %>
+        <% end %>
 
 <% @diy.materials.each do |mat| %>
     <% if mat.user == current_user %>
-    <h2> materials needed: </h2>
+    <h2> your materials: </h2>
     <li> name: <%= mat.name %> | count: <%= mat.count %> | complete: <%= mat.complete %> <%= (mat.user == current_user) ? (link_to "Edit materials", edit_material_path(mat)) : (nil) %></li>
     <% else %>
-     <% nil %>
+    <% nil %>
     <% end %>
     <% end %>
     <br><br>
