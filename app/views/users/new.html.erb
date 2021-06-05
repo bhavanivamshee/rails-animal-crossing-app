@@ -1,5 +1,7 @@
 <h1>Sign Up</h1>
 
+<%=render(partial: "application/errors", locals: {errors: @user.errors.full_messages})%>
+
 <%= form_for @user, url: signup_path do |f| %>
     <%=f.label "Island Name"%>
     <%=f.text_field :island_name%>
