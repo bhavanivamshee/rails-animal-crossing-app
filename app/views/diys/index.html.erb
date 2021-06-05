@@ -1,5 +1,10 @@
 <h1> All the Diys!!! </h1>
 
+<%= form_with url: diys_path, method: :get do |f| %>
+    <%=f.text_field :name %>
+    <%=f. submit"Search"%>
+  <%end%>
+
 <% @diys.each do |diy| %>
     <li><%= link_to(diy.name, diy_path(diy))%></li>
 <%end%>

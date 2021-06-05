@@ -4,6 +4,7 @@ class Diy < ApplicationRecord
     has_many :users, through: :materials
 
     validates :name, presence: true, uniqueness: true
+    scope(:name_search, ->(name) { self.where("name LIKE ?", name) })
 
     def self.get_data
         resp = RestClient::Request.execute(method: :get,

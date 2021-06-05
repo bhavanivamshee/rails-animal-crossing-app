@@ -1,7 +1,9 @@
 class DiysController < ApplicationController
 
     def index
-        if params[:user_id]
+        if params[:name]
+            @diys = Diy.name_search(params[:name])
+        elsif params[:user_id]
         user = User.find_by(id: params[:user_id])
         @diys = user.diys
         else

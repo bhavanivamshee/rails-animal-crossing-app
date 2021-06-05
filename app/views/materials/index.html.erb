@@ -6,6 +6,8 @@
   <%end%>
 
 <% @materials.each do |material| %>
+  <% if material.user_id == nil%>
    <li> <%= material.name %>: <%= material.count %> <%= material.diy.name %> </li>
     <br>
+    <%end%>
 <%end%>

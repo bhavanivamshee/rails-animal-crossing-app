@@ -1,6 +1,8 @@
 class MaterialsController < ApplicationController
 
     before_action :redirect_user
+    before_action :find_material, only: [:edit, :update]
+
 
     def index
         if params[:name]
@@ -31,12 +33,10 @@ class MaterialsController < ApplicationController
     end
 
     def edit
-            @material = Material.find_by(id: params[:id])
             redirect_to '/diys' unless @material.user == current_user
     end
 
     def update
-        @material = Material.find_by(id: params[:id])
         @material.user = current_user
         if @material.update(material_params)
             redirect_to user_diys_path(@material.user)
@@ -50,4 +50,9 @@ class MaterialsController < ApplicationController
     def material_params
         params.require(:material).permit(:name, :count, :complete, :diy_id, :user_id)
     end
+
+    def find_material
+        @material = Material.find_by(id: params[:id])
+    end
+    
 end
