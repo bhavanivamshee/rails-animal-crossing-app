@@ -1,7 +1,7 @@
 class DiysController < ApplicationController
 
     before_action :find_user, only: [:index, :show]
-    before_action :logged_in
+
 
 
     def index
