@@ -1,6 +1,6 @@
 class MaterialsController < ApplicationController
 
-    before_action :redirect_user
+    before_action :logged_in
     before_action :find_material, only: [:edit, :update]
 
 

@@ -31,7 +31,6 @@ gem 'jquery-rails'
 gem 'rest-client'
 gem 'bootstrap-sass'
 gem 'securerandom'
-gem 'omniauth-rails_csrf_protection'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

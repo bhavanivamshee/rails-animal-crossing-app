@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-    skip_before_action :redirect_user, except: [:destroy]
+    skip_before_action :logged_in, except: [:destroy]
 
     def new
         @user = User.new
@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
         user = User.find_or_create_by(username: fb_auth['info']['email']) do |u|
             u.password = SecureRandom.hex(15)
         end
-        if user.save
+        if user.valid?
             session[:user_id] = user.id
             redirect_to user_diys_path(user)
         else
