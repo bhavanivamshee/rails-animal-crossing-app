@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
 
     def create_with_facebook
         user = User.find_or_create_by(username: fb_auth['info']['email']) do |u|
-            u.password = 'password'
+            u.password = SecureRandom.hex(15)
         end
         if user.save
             session[:user_id] = user.id
